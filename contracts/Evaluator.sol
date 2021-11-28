@@ -6,7 +6,6 @@ import "./ExerciceSolution.sol";
 
 contract Evaluator 
 {
-
 	mapping(address => bool) public teachers;
 	ERC20TD TDERC20;
 
@@ -254,7 +253,6 @@ contract Evaluator
 		// Checking that bought amount is twice what was bought before, for the same price
 		require(tier2AmountBought == 2 * ex8Tier1AmountBought[msg.sender]);
 
-
         if (!exerciceProgression[msg.sender][9])
 		{
 			exerciceProgression[msg.sender][9] = true;
@@ -382,8 +380,4 @@ contract Evaluator
 			emit newRandomTickerAndSupply(randomTickers[i], randomSupplies[i]);
 		}
 	}
-
-
-
-
 }

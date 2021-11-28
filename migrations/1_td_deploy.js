@@ -1,21 +1,28 @@
 const Str = require('@supercharge/strings')
 // const BigNumber = require('bignumber.js');
 
-var TDErc20 = artifacts.require("ERC20TD.sol");
-var evaluator = artifacts.require("Evaluator.sol");
+// var TDErc20 = artifacts.require("ERC20TD.sol");
+// var evaluator = artifacts.require("Evaluator.sol");
+
+var ExerciceSolution = artifacts.require("ExerciceSolution.sol");
 
 
 module.exports = (deployer, network, accounts) => {
     deployer.then(async () => {
-        await deployTDToken(deployer, network, accounts); 
-        await deployEvaluator(deployer, network, accounts); 
-        await setPermissionsAndRandomValues(deployer, network, accounts); 
-        await deployRecap(deployer, network, accounts); 
+        // await deployTDToken(deployer, network, accounts); 
+        // await deployEvaluator(deployer, network, accounts); 
+        // await setPermissionsAndRandomValues(deployer, network, accounts); 
+        await deployExerciceSolution(deployer, network, accounts);
+        await deployRecap(deployer, network, accounts);
     });
 };
 
+async function deployExerciceSolution(deployer, network, account) {
+    ExerciceSolutionToken = await ExerciceSolution.new("C3o29", "C3o29", web3.utils.toBN("928095817000000000000000000"))
+}
+
 async function deployTDToken(deployer, network, accounts) {
-	TDToken = await TDErc20.new("TD-ERC20-101","TD-ERC20-101",web3.utils.toBN("20000000000000000000000000000"))
+	TDToken = await TDErc20.new("TD-ERC20-101","TD-ERC20-101", web3.utils.toBN("20000000000000000000000000000"))
 }
 
 async function deployEvaluator(deployer, network, accounts) {
@@ -42,8 +49,10 @@ async function setPermissionsAndRandomValues(deployer, network, accounts) {
 }
 
 async function deployRecap(deployer, network, accounts) {
-	console.log("TDToken " + TDToken.address)
-	console.log("Evaluator " + Evaluator.address)
+	// console.log("TDToken " + TDToken.address)
+	// console.log("Evaluator " + Evaluator.address)
+
+    console.log("ExercieSolutionToken " + ExerciceSolutionToken.address);
 }
 
 
